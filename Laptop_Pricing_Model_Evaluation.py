@@ -43,11 +43,11 @@ plrm=LinearRegression()
 Rsqu_test = []
 order = [1, 2, 3, 4, 5]
 for n in order:
-    pr = PolynomialFeatures(degree=n)
-    x_train_pr = pr.fit_transform(x_train[['CPU_frequency']])
-    x_test_pr = pr.fit_transform(x_test[['CPU_frequency']])
-    plrm.fit(x_train_pr, y_train)
-    Rsqu_test.append(plrm.score(x_test_pr, y_test))
+    plrm = PolynomialFeatures(degree=n)
+    x_train_plrm = plrm.fit_transform(x_train[['CPU_frequency']])
+    x_test_plrm = plrm.fit_transform(x_test[['CPU_frequency']])
+    plrm.fit(x_train_plrm, y_train)
+    Rsqu_test.append(plrm.score(x_test_plrm, y_test))
 
 # Plotting the values of R^2 scores
 plt.plot(order, Rsqu_test)
